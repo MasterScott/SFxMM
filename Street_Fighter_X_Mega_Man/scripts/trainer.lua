@@ -1,5 +1,16 @@
 --- General Values ---
 
+-- trainer version
+local ver = {}
+ver.maj = 0
+ver.min = 1
+ver.rel = 0
+ver.beta = 1
+ver.full = string.format("%i.%i.%i", ver.maj, ver.min, ver.rel)
+if ver.beta > 0 then
+	ver.full = string.format("%s-beta%i", ver.full, ver.beta)
+end
+
 -- executable/process to be loaded
 local processName = "SFXMMv2_US.exe"
 
@@ -291,42 +302,74 @@ end
 --- About Dialog ---
 
 local function showAbout()
-	--[[
-    local function center(control)
-	    local pWidth = control.Parent.getWidth()
-		local pHeight = control.Parent.getHeight()
-		local x = (pWidth / 2) - (control.getWidth())
-		
-		-- TEMP:
-		y = 0
-		
-		control.setPosition(x, y)
-	end
-	]]
-	
+	local W = 400
+	local H = 480
+
+	-- dialog to display information about trainer
 	local aboutDialog = createForm(false)
 	aboutDialog.setCaption("About")
-	aboutDialog.setSize(400, 480)
-	aboutDialog.Alignment = taCenter
-	aboutDialog.Layout = tlCenter
-	aboutDialog.BorderStyle = bsDialog
-	
-	-- background panel
+	aboutDialog.setSize(W, H)
+
+	-- main panel
 	local panel = createPanel(aboutDialog)
 	panel.Align = alClient
-	panel.Alignment = taCenter
-	panel.Layout = tlCenter
-	
-	-- description text
-	local descr = createLabel(panel)
-	descr.setCaption("CE Trainer for Street Fighter X Mega Man v2.0")
-	descr.Align = alClient
-	descr.Layout = tlCenter
-	descr.Alignment = taCenter
-	descr.AutoSize = false
-	
-	aboutDialog.showModal()
+	panel.BorderStyle = bsNone
 
+	-- description text
+	local descr1 = createLabel(panel)
+	descr1.setCaption("Trainer for")
+	descr1.Top = H / 4
+	local descr2 = createLabel(panel)
+	descr2.setCaption("Street Fighter X Mega Man")
+	for _, d in pairs({descr1, descr2}) do
+		d.Font.Size = 12
+		--setProperty(d, "alignment", "taCenter")
+		d.anchorSideLeft.control = panel
+		d.anchorSideLeft.side = asrCenter
+	end
+	descr2.anchorSideTop.control = descr1
+	descr2.anchorSideTop.side = asrBottom
+	descr2.Font.Color = 0xFF0000
+	descr2.Cursor = -21 -- variable "crHandPoint" does not work
+	descr2.OnClick = function(sender)
+		shellExecute("http://megaman.capcom.com/sfxmm/")
+		descr2.Font.Color = 0x0000FF
+	end
+
+	local author = createLabel(panel)
+	author.setCaption("Created by Jordan Irwin (AntumDeluge)")
+	author.anchorSideLeft.control = panel
+	author.anchorSideLeft.side = asrCenter
+	author.anchorSideTop.control = descr2
+	author.anchorSideTop.side = asrBottom
+	author.BorderSpacing.top = 20
+
+	local version = createLabel(panel)
+	version.setCaption("Version: " .. ver.full)
+	version.anchorSideLeft.control = panel
+	version.anchorSideLeft.side = asrCenter
+	version.anchorSideTop.control = author
+	version.anchorSideTop.side = asrBottom
+	version.BorderSpacing.top = 20
+
+	-- Cheat Engine info
+	local ceInfo = createLabel(panel)
+	ceInfo.setCaption("Made with Cheat Engine 6.8.1 by Dark Byte")
+	ceInfo.anchorSideLeft.control = panel
+	ceInfo.anchorSideLeft.side = asrCenter
+	ceInfo.anchorSideTop.control = version
+	ceInfo.anchorSideTop.side = asrBottom
+	ceInfo.BorderSpacing.top = 20
+	ceInfo.Font.Color = 0xFF0000
+	ceInfo.Cursor = -21 -- variable "crHandPoint" does not work
+	ceInfo.OnClick = function(sender)
+		shellExecute("https://cheatengine.org/")
+		ceInfo.Font.Color = 0x0000FF
+	end
+
+	-- show the dialog
+	aboutDialog.showModal()
+	-- free memory after dialog is closed
 	aboutDialog.destroy()
 end
 
