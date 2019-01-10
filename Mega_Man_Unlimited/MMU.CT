@@ -14,7 +14,7 @@
     <CheatEntry>
       <ID>5</ID>
       <Description>"Energy"</Description>
-      <LastState Value="28" RealAddress="12121CA0"/>
+      <LastState Value="12" RealAddress="121A1B98"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"MMU.exe"+002C55F0</Address>
       <Offsets>
@@ -25,7 +25,7 @@
     <CheatEntry>
       <ID>36</ID>
       <Description>"Energy Display"</Description>
-      <LastState Value="28" RealAddress="10114908"/>
+      <LastState Value="12" RealAddress="2A62D060"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"THREADSTACK0"-0000051C</Address>
       <Offsets>
@@ -33,6 +33,20 @@
         <Offset>0</Offset>
         <Offset>38</Offset>
         <Offset>4</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>60</ID>
+      <Description>"Screws"</Description>
+      <LastState Value="99" RealAddress="0019FC6C"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"MMU.exe"+002CFBBC</Address>
+      <Offsets>
+        <Offset>5E0</Offset>
+        <Offset>14</Offset>
+        <Offset>0</Offset>
+        <Offset>0</Offset>
+        <Offset>1C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -244,7 +258,7 @@
             <CheatEntry>
               <ID>25</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F0</Address>
               <Offsets>
@@ -257,7 +271,7 @@
             <CheatEntry>
               <ID>23</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F0</Address>
               <Offsets>
@@ -271,7 +285,7 @@
             <CheatEntry>
               <ID>24</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-00000514</Address>
               <Offsets>
@@ -284,7 +298,7 @@
             <CheatEntry>
               <ID>22</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-00000514</Address>
               <Offsets>
@@ -298,7 +312,7 @@
             <CheatEntry>
               <ID>4</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-00000514</Address>
               <Offsets>
@@ -309,7 +323,7 @@
             <CheatEntry>
               <ID>6</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-00000514</Address>
               <Offsets>
@@ -321,7 +335,7 @@
             <CheatEntry>
               <ID>7</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F0</Address>
               <Offsets>
@@ -358,7 +372,7 @@
             <CheatEntry>
               <ID>10</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F8</Address>
               <Offsets>
@@ -372,7 +386,7 @@
             <CheatEntry>
               <ID>11</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F8</Address>
               <Offsets>
@@ -385,7 +399,7 @@
             <CheatEntry>
               <ID>12</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F8</Address>
               <Offsets>
@@ -448,7 +462,7 @@
             <CheatEntry>
               <ID>17</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-00000514</Address>
               <Offsets>
@@ -462,7 +476,7 @@
             <CheatEntry>
               <ID>18</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F0</Address>
               <Offsets>
@@ -476,7 +490,7 @@
             <CheatEntry>
               <ID>19</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-00000514</Address>
               <Offsets>
@@ -489,7 +503,7 @@
             <CheatEntry>
               <ID>20</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="12121CA0"/>
+              <LastState Value="12" RealAddress="121A1B98"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"MMU.exe"+002C55F0</Address>
               <Offsets>
@@ -524,7 +538,7 @@
             <CheatEntry>
               <ID>30</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="10114908"/>
+              <LastState Value="12" RealAddress="2A62D060"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-0000051C</Address>
               <Offsets>
@@ -534,7 +548,7 @@
             <CheatEntry>
               <ID>31</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="10114908"/>
+              <LastState Value="12" RealAddress="2A62D060"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-0000051C</Address>
               <Offsets>
@@ -545,7 +559,7 @@
             <CheatEntry>
               <ID>32</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="10114908"/>
+              <LastState Value="12" RealAddress="2A62D060"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-0000051C</Address>
               <Offsets>
@@ -557,7 +571,7 @@
             <CheatEntry>
               <ID>33</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="10114908"/>
+              <LastState Value="12" RealAddress="2A62D060"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-0000051C</Address>
               <Offsets>
@@ -570,7 +584,7 @@
             <CheatEntry>
               <ID>34</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="10114908"/>
+              <LastState Value="12" RealAddress="2A62D060"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-0000051C</Address>
               <Offsets>
@@ -584,7 +598,7 @@
             <CheatEntry>
               <ID>35</ID>
               <Description>"pointerscan result"</Description>
-              <LastState Value="28" RealAddress="10114908"/>
+              <LastState Value="12" RealAddress="2A62D060"/>
               <VariableType>4 Bytes</VariableType>
               <Address>"THREADSTACK0"-0000051C</Address>
               <Offsets>
