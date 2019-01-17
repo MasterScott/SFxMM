@@ -29,13 +29,28 @@ log.lines = {}
 
 --- Default Values ---
 
+local energyValue1 = 1073741824
+local energyValue28 = 1078722560
+--local energyValueFull = energyValue28
+local energyValueFull = 56
+
 local livesValue0 = 1072693248
 local livesValue1 = 1073741824
 local livesValue2 = 1074266112
---local livesValue3 = ???
-local livesValue4 = 1090465504
+local livesValue3 = 1074790400
+local livesValue4 = 1075052544
+local livesValue5 = 1075314688
+local livesValue6 = 1075576832
+local livesValue7 = 1075838976
+local livesValue8 = 1075970048
+local livesValue9 = 1076101120
+local livesValue10 = 1076232192
+--local livesValue11 = ???
+local livesValue55 = energyValueFull
 local livesValueDefault = livesValue2
-local energyValueDefault = 1078722560
+
+local etankValue0 = 0
+local etankValue1 = livesValue0
 
 
 --- Memory Address Variables ---
@@ -46,20 +61,24 @@ local addressList = getAddressList()
 -- NOTE: SF X MM appears to use multiple pointers for lives attribute
 --		 or I haven't found the base pointer yet
 --local lives = addressList.getMemoryRecordByDescription("Lives")
-local lives = {}
+--local lives = {}
 
 -- fill in lives table
+--[[
 local idx = 0
 while (idx < addressList.Count) do
 	local rec = addressList.getMemoryRecord(idx)
-	if string.sub(rec.Description, 1, 5) == "Lives" then
+	--if string.sub(rec.Description, 1, 5) == "Lives" then
+	if string.sub(rec.Description, 1, 9) == "Lives PTR" then
 		table.insert(lives, rec)
 	end
 	idx = idx + 1
 end
+]]
 
 -- player energy value
-local energy = addressList.getMemoryRecordByDescription("Energy")
+local recEnergy = addressList.getMemoryRecordByDescription("Energy")
+local recLives = addressList.getMemoryRecordByDescription("Lives")
 
 
 --- Timer Used for Instant Death ---
@@ -200,6 +219,16 @@ local function lockRecord(record, locked)
 	if locked == nil then
 	   locked = true
 	end
+	
+	-- find record from string
+	local recType = type(record)
+	if recType == "string" then
+		log.write("Identifying record by description string")
+		record = addressList.getMemoryRecordByDescription(record)
+	elseif recType == "number" then
+		log.write("Identifying record by table index")
+		record = addressList.getMemoryRecord(record)
+	end
 
 	-- set the record's locked/frozed state
 	record.Active = locked
@@ -214,6 +243,7 @@ end
 -- freezes state of all "lives" memory records
 -- NOTE: this can be removed if base pointer for lives value
 --		 is found
+--[[
 local function lockLives(locked)
 	-- default is to lock
 	if locked == nil then
@@ -223,6 +253,8 @@ local function lockLives(locked)
 	for _, rec in pairs(lives) do
 		rec.Active = locked
 	end
+	
+	--recLives.Active = locked
 
 	if locked then
 		log.write("\"Lives\" locked")
@@ -230,23 +262,24 @@ local function lockLives(locked)
 		log.write("\"Lives\" unlocked")
 	end
 end
+]]
 
 -- restores life or weapon energy
 local function restoreEnergy(record)
 	-- default is life
 	if record == nil then
-		record = energy
+		record = recEnergy
 	end
 
-	record.Value = tostring(energyValueDefault)
+	record.Value = tostring(energyValueFull)
 
 	log.write("\"" .. record.Description .. "\" restored to default value (" .. record.Value .. ")")
 end
 
 -- 1-hit death
 local function killOnCollision()
-	if energy.Value ~= tostring(energyValueDefault) and energy.Value ~= "0" then
-		energy.Value = "0"
+	if recEnergy.Value ~= tostring(energyValueFull) and recEnergy.Value ~= "0" then
+		recEnergy.Value = "0"
 		log.write("instant death event")
 	end
 end
@@ -273,7 +306,7 @@ end
 timer.OnTimer = function()
 	local processID = getProcessIDFromProcessName(process)
 	if processID ~= nil then
-		if energy ~= nil and energy.Value ~= "??" then
+		if recEnergy ~= nil and recEnergy.Value ~= "??" then
 			killOnCollision()
 		end
 	else
@@ -391,15 +424,22 @@ Frame.ButtonLog.OnClick = function()
 end
 Frame.ButtonAbout.OnClick = showAbout
 Frame.FullHealth.OnClick = function()
-	restoreEnergy(energy)
+	restoreEnergy(recEnergy)
+end
+Frame.ButtonPause.OnChange = function()
+	if Frame.ButtonPause.Checked then
+		pause()
+	else
+		unpause()
+	end
 end
 
 Frame.Lives.onChange = function()
-	lockLives(Frame.Lives.Checked)
+	lockRecord(recLives, Frame.Lives.Checked)
 end
 
 Frame.Energy.onChange = function()
-	lockRecord(energy, Frame.Energy.Checked)
+	lockRecord(recEnergy, Frame.Energy.Checked)
 end
 
 Frame.InstantDeath.onChange = function()
@@ -409,10 +449,10 @@ end
 --- GUI Startup ---
 
 -- set check box states
-if lives.Active then
+if recLives.Active then
    Frame.Lives.State = 1
 end
-if energy.Active then
+if recEnergy.Active then
 	Frame.Energy.State = 1
 end
 if instantDeath then
