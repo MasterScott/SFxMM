@@ -14,7 +14,7 @@
     <CheatEntry>
       <ID>5</ID>
       <Description>"Energy"</Description>
-      <LastState Value="28" RealAddress="2A37FD28"/>
+      <LastState Value="28" RealAddress="26458D40"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"MMU.exe"+002C55F0</Address>
       <Offsets>
@@ -25,7 +25,7 @@
     <CheatEntry>
       <ID>36</ID>
       <Description>"Energy Display"</Description>
-      <LastState Value="28" RealAddress="0E4E2AB0"/>
+      <LastState Value="28" RealAddress="22E59750"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"THREADSTACK0"-0000051C</Address>
       <Offsets>
@@ -134,11 +134,25 @@
         <CheatEntry>
           <ID>79</ID>
           <Description>"Jet Missile"</Description>
-          <LastState Value="28" RealAddress="00D50228"/>
+          <LastState Value="28" RealAddress="026A0248"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
             <Offset>10</Offset>
+            <Offset>0</Offset>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88</ID>
+          <Description>"Tank Arsenal"</Description>
+          <LastState Value="26" RealAddress="026A0408"/>
+          <VariableType>Float</VariableType>
+          <Address>"THREADSTACK0"-000002A8</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>0</Offset>
+            <Offset>8</Offset>
             <Offset>0</Offset>
             <Offset>4</Offset>
           </Offsets>
