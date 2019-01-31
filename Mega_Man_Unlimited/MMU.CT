@@ -239,6 +239,20 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
+          <ID>130</ID>
+          <Description>"Water Cannon"</Description>
+          <LastState Value="28" RealAddress="027C0688"/>
+          <VariableType>Float</VariableType>
+          <Address>"THREADSTACK0"-000002A8</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>4</Offset>
+            <Offset>4</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
           <ID>124</ID>
           <Description>"Yo-Yo Cutter"</Description>
           <LastState Value="28" RealAddress="027C0588"/>
