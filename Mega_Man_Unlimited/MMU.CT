@@ -158,15 +158,16 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>114</ID>
+          <ID>135</ID>
           <Description>"Nail Shield"</Description>
-          <LastState Value="28" RealAddress="026F06E8"/>
+          <LastState Value="28" RealAddress="02450448"/>
           <VariableType>Float</VariableType>
-          <Address>"MMU.exe"+002C7000</Address>
+          <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
-            <Offset>150</Offset>
-            <Offset>28</Offset>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
             <Offset>0</Offset>
+            <Offset>4</Offset>
           </Offsets>
         </CheatEntry>
         <CheatEntry>
