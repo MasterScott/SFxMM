@@ -123,6 +123,19 @@
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>118</ID>
+          <Description>"Glue Shot"</Description>
+          <LastState Value="28" RealAddress="027C0808"/>
+          <VariableType>Float</VariableType>
+          <Address>"THREADSTACK0"-000002A8</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>4</Offset>
+            <Offset>0</Offset>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
           <ID>79</ID>
           <Description>"Jet Missile"</Description>
           <LastState Value="28" RealAddress="027C04A8"/>
