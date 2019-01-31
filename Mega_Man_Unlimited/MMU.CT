@@ -199,6 +199,19 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
+          <ID>126</ID>
+          <Description>"Rush Jet"</Description>
+          <LastState Value="28" RealAddress="027C0708"/>
+          <VariableType>Float</VariableType>
+          <Address>"THREADSTACK0"-000002A8</Address>
+          <Offsets>
+            <Offset>10</Offset>
+            <Offset>8</Offset>
+            <Offset>8</Offset>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
           <ID>88</ID>
           <Description>"Tank Arsenal"</Description>
           <LastState Value="28" RealAddress="027C0728"/>
