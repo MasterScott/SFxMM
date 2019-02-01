@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>56</ID>
       <Description>"Lives"</Description>
-      <LastState Value="9" Activated="1" RealAddress="0019FC64"/>
+      <LastState Value="9" RealAddress="0019FC64"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"MMU.exe"+002C55A0</Address>
       <Offsets>
@@ -123,7 +123,7 @@
         <CheatEntry>
           <ID>122</ID>
           <Description>"Comet Dash"</Description>
-          <LastState Value="28" RealAddress="026F06A8"/>
+          <LastState Value="28" RealAddress="024E0528"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -135,7 +135,7 @@
         <CheatEntry>
           <ID>118</ID>
           <Description>"Glue Shot"</Description>
-          <LastState Value="28" RealAddress="026F0688"/>
+          <LastState Value="28" RealAddress="024E04A8"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -148,7 +148,7 @@
         <CheatEntry>
           <ID>79</ID>
           <Description>"Jet Missile"</Description>
-          <LastState Value="28" RealAddress="026F07A8"/>
+          <LastState Value="28" RealAddress="024E0748"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -160,7 +160,7 @@
         <CheatEntry>
           <ID>135</ID>
           <Description>"Nail Shield"</Description>
-          <LastState Value="28" RealAddress="02450448"/>
+          <LastState Value="28" RealAddress="024E0768"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -173,7 +173,7 @@
         <CheatEntry>
           <ID>116</ID>
           <Description>"Nitro Blast"</Description>
-          <LastState Value="28" RealAddress="026F0628"/>
+          <LastState Value="28" RealAddress="024E05A8"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -187,7 +187,7 @@
         <CheatEntry>
           <ID>120</ID>
           <Description>"Rainbow Beam"</Description>
-          <LastState Value="28" RealAddress="026F0828"/>
+          <LastState Value="28" RealAddress="024E05E8"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -200,7 +200,7 @@
         <CheatEntry>
           <ID>128</ID>
           <Description>"Rush Coil"</Description>
-          <LastState Value="28" RealAddress="026F0528"/>
+          <LastState Value="28" RealAddress="024E04C8"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -213,7 +213,7 @@
         <CheatEntry>
           <ID>126</ID>
           <Description>"Rush Jet"</Description>
-          <LastState Value="28" RealAddress="026F07C8"/>
+          <LastState Value="28" RealAddress="024E07A8"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -226,7 +226,7 @@
         <CheatEntry>
           <ID>88</ID>
           <Description>"Tank Arsenal"</Description>
-          <LastState Value="28" RealAddress="026F06C8"/>
+          <LastState Value="28" RealAddress="024E0608"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -240,7 +240,7 @@
         <CheatEntry>
           <ID>130</ID>
           <Description>"Water Cannon"</Description>
-          <LastState Value="28" RealAddress="026F06E8"/>
+          <LastState Value="28" RealAddress="024E0668"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -254,7 +254,7 @@
         <CheatEntry>
           <ID>124</ID>
           <Description>"Yo-Yo Cutter"</Description>
-          <LastState Value="28" RealAddress="026F04C8"/>
+          <LastState Value="28" RealAddress="024E0648"/>
           <VariableType>Float</VariableType>
           <Address>"THREADSTACK0"-000002A8</Address>
           <Offsets>
@@ -266,18 +266,93 @@
           </Offsets>
         </CheatEntry>
         <CheatEntry>
-          <ID>137</ID>
-          <Description>"Yoku Attack"</Description>
-          <LastState Value="28" RealAddress="02450328"/>
-          <VariableType>Float</VariableType>
-          <Address>"MMU.exe"+00003170</Address>
-          <Offsets>
-            <Offset>2E8</Offset>
-            <Offset>14</Offset>
-            <Offset>10</Offset>
-            <Offset>18</Offset>
-            <Offset>148</Offset>
-          </Offsets>
+          <ID>174</ID>
+          <Description>"Yoku script"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Mega Man Unlimited
+  Version: 1.3.1
+  Date   : 2019-01-31
+  Author : AntumDeluge
+
+  This script stores the value of Yoku Attack in "yoku" symbol. Static
+  pointer does not work for this weapon.
+}
+
+[ENABLE]
+
+aobscanmodule(aobYokuAttack,MMU.exe,D9 18 8B E5 5D C2 08) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+globalalloc(yoku,4)
+
+newmem:
+  mov [yoku],eax
+
+code:
+  fstp dword ptr [eax]
+  mov esp,ebp
+  pop ebp
+  jmp return
+
+aobYokuAttack:
+  jmp newmem
+return:
+registersymbol(aobYokuAttack)
+
+[DISABLE]
+
+aobYokuAttack:
+  db D9 18 8B E5 5D
+
+unregistersymbol(aobYokuAttack)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+20ECC
+
+"MMU.exe"+20EB0: 55                 -  push ebp
+"MMU.exe"+20EB1: 8B EC              -  mov ebp,esp
+"MMU.exe"+20EB3: 51                 -  push ecx
+"MMU.exe"+20EB4: 89 4D FC           -  mov [ebp-04],ecx
+"MMU.exe"+20EB7: 8D 45 08           -  lea eax,[ebp+08]
+"MMU.exe"+20EBA: 50                 -  push eax
+"MMU.exe"+20EBB: 8B 4D FC           -  mov ecx,[ebp-04]
+"MMU.exe"+20EBE: 81 C1 4C 01 00 00  -  add ecx,0000014C
+"MMU.exe"+20EC4: E8 D7 00 00 00     -  call MMU.exe+20FA0
+"MMU.exe"+20EC9: D9 45 0C           -  fld dword ptr [ebp+0C]
+// ---------- INJECTING HERE ----------
+"MMU.exe"+20ECC: D9 18              -  fstp dword ptr [eax]
+"MMU.exe"+20ECE: 8B E5              -  mov esp,ebp
+"MMU.exe"+20ED0: 5D                 -  pop ebp
+// ---------- DONE INJECTING  ----------
+"MMU.exe"+20ED1: C2 08 00           -  ret 0008
+"MMU.exe"+20ED4: CC                 -  int 3 
+"MMU.exe"+20ED5: CC                 -  int 3 
+"MMU.exe"+20ED6: CC                 -  int 3 
+"MMU.exe"+20ED7: CC                 -  int 3 
+"MMU.exe"+20ED8: CC                 -  int 3 
+"MMU.exe"+20ED9: CC                 -  int 3 
+"MMU.exe"+20EDA: CC                 -  int 3 
+"MMU.exe"+20EDB: CC                 -  int 3 
+"MMU.exe"+20EDC: CC                 -  int 3 
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>175</ID>
+              <Description>"Yoku Attack"</Description>
+              <LastState Value="28" RealAddress="024E0628"/>
+              <VariableType>Float</VariableType>
+              <Address>yoku</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
         </CheatEntry>
       </CheatEntries>
     </CheatEntry>
@@ -324,5 +399,10 @@ dealloc(newmem)
 </AssemblerScript>
     </CheatEntry>
   </CheatEntries>
-  <UserdefinedSymbols/>
+  <UserdefinedSymbols>
+    <SymbolEntry>
+      <Name>yoku</Name>
+      <Address>00860010</Address>
+    </SymbolEntry>
+  </UserdefinedSymbols>
 </CheatTable>
