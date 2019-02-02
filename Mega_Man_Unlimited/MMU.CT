@@ -357,6 +357,151 @@ dealloc(newmem)
       </CheatEntries>
     </CheatEntry>
     <CheatEntry>
+      <ID>230</ID>
+      <Description>"All Bosses"</Description>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>13</ByteLength>
+      <Address>"THREADSTACK0"-000002F8</Address>
+      <Offsets>
+        <Offset>0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>215</ID>
+      <Description>"Defeated Bosses / Tools"</Description>
+      <Options moRecursiveSetValue="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>231</ID>
+          <Description>"Buster"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>0</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>241</ID>
+          <Description>"Rush Coil"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>B</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>240</ID>
+          <Description>"Rush Jet"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>A</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>214</ID>
+          <Description>"Comet Woman"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>237</ID>
+          <Description>"Glue Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>6</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>233</ID>
+          <Description>"Jet Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>1</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>235</ID>
+          <Description>"Nail Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>3</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>238</ID>
+          <Description>"Rainbow Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>7</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>234</ID>
+          <Description>"Tank Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>2</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>218</ID>
+          <Description>"Trinitro Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>4</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>239</ID>
+          <Description>"Yo-Yo man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>9</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>236</ID>
+          <Description>"Yoku Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>5</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>232</ID>
+          <Description>"Whirlpool Man"</Description>
+          <VariableType>Byte</VariableType>
+          <Address>"THREADSTACK0"-000002F8</Address>
+          <Offsets>
+            <Offset>C</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>246</ID>
+      <Description>"Wily Stage"</Description>
+      <VariableType>Byte</VariableType>
+      <Address>"MMU.exe"+002C55A0</Address>
+      <Offsets>
+        <Offset>234</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
       <ID>133</ID>
       <Description>"Instant Death"</Description>
       <LastState/>
