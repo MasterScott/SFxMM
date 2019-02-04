@@ -688,6 +688,83 @@ dealloc(newmem)
 }
 </AssemblerScript>
     </CheatEntry>
+    <CheatEntry>
+      <ID>259</ID>
+      <Description>"10+ Lives"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MMU.exe
+  Version: 
+  Date   : 2019-02-04
+  Author : antum
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(aobAllowMoreLives,MMU.exe,75 02 EB 20 8B 4D FC 81 C1 C8 00 00 00 E8 36 89) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  nop
+  nop
+  //jne MMU.exe+4A9C
+  //jmp MMU.exe+4ABC
+  mov ecx,[ebp-04]
+  jmp return
+
+aobAllowMoreLives:
+  jmp newmem
+  nop
+  nop
+return:
+registersymbol(aobAllowMoreLives)
+
+[DISABLE]
+
+aobAllowMoreLives:
+  db 75 02 EB 20 8B 4D FC
+
+unregistersymbol(aobAllowMoreLives)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+4A98
+
+"MMU.exe"+4A7E: CC                    -  int 3 
+"MMU.exe"+4A7F: CC                    -  int 3 
+"MMU.exe"+4A80: 55                    -  push ebp
+"MMU.exe"+4A81: 8B EC                 -  mov ebp,esp
+"MMU.exe"+4A83: 51                    -  push ecx
+"MMU.exe"+4A84: 89 4D FC              -  mov [ebp-04],ecx
+"MMU.exe"+4A87: 8B 4D FC              -  mov ecx,[ebp-04]
+"MMU.exe"+4A8A: 81 C1 C8 00 00 00     -  add ecx,000000C8
+"MMU.exe"+4A90: E8 4B 89 0A 00        -  call MMU.exe+AD3E0
+"MMU.exe"+4A95: 83 F8 09              -  cmp eax,09
+// ---------- INJECTING HERE ----------
+"MMU.exe"+4A98: 75 02                 -  jne MMU.exe+4A9C
+"MMU.exe"+4A9A: EB 20                 -  jmp MMU.exe+4ABC
+"MMU.exe"+4A9C: 8B 4D FC              -  mov ecx,[ebp-04]
+// ---------- DONE INJECTING  ----------
+"MMU.exe"+4A9F: 81 C1 C8 00 00 00     -  add ecx,000000C8
+"MMU.exe"+4AA5: E8 36 89 0A 00        -  call MMU.exe+AD3E0
+"MMU.exe"+4AAA: 83 C0 01              -  add eax,01
+"MMU.exe"+4AAD: 50                    -  push eax
+"MMU.exe"+4AAE: 8B 4D FC              -  mov ecx,[ebp-04]
+"MMU.exe"+4AB1: 81 C1 C8 00 00 00     -  add ecx,000000C8
+"MMU.exe"+4AB7: E8 14 FF FF FF        -  call MMU.exe+49D0
+"MMU.exe"+4ABC: 8B E5                 -  mov esp,ebp
+"MMU.exe"+4ABE: 5D                    -  pop ebp
+"MMU.exe"+4ABF: C3                    -  ret 
+}
+</AssemblerScript>
+    </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols>
     <SymbolEntry>
