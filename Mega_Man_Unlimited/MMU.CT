@@ -765,6 +765,80 @@ dealloc(newmem)
 }
 </AssemblerScript>
     </CheatEntry>
+    <CheatEntry>
+      <ID>260</ID>
+      <Description>"Auto End Stage"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MMU.exe
+  Version: 
+  Date   : 2019-02-04
+  Author : antum
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(autoEndStage,MMU.exe,08 00 85 C0 75 04 B0 01 EB 22) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //jne MMU.exe+20E4D
+  mov al,01
+  jmp MMU.exe+20E6F
+  jmp return
+
+autoEndStage+04:
+  jmp newmem
+  nop
+return:
+registersymbol(autoEndStage)
+
+[DISABLE]
+
+autoEndStage+04:
+  db 75 04 B0 01 EB 22
+
+unregistersymbol(autoEndStage)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+20E47
+
+"MMU.exe"+20E2E: CC                 -  int 3 
+"MMU.exe"+20E2F: CC                 -  int 3 
+"MMU.exe"+20E30: 55                 -  push ebp
+"MMU.exe"+20E31: 8B EC              -  mov ebp,esp
+"MMU.exe"+20E33: 51                 -  push ecx
+"MMU.exe"+20E34: 89 4D FC           -  mov [ebp-04],ecx
+"MMU.exe"+20E37: 8B 4D FC           -  mov ecx,[ebp-04]
+"MMU.exe"+20E3A: 81 C1 C8 00 00 00  -  add ecx,000000C8
+"MMU.exe"+20E40: E8 9B C5 08 00     -  call MMU.exe+AD3E0
+"MMU.exe"+20E45: 85 C0              -  test eax,eax
+// ---------- INJECTING HERE ----------
+"MMU.exe"+20E47: 75 04              -  jne MMU.exe+20E4D
+"MMU.exe"+20E49: B0 01              -  mov al,01
+"MMU.exe"+20E4B: EB 22              -  jmp MMU.exe+20E6F
+// ---------- DONE INJECTING  ----------
+"MMU.exe"+20E4D: 8B 4D FC           -  mov ecx,[ebp-04]
+"MMU.exe"+20E50: 81 C1 C8 00 00 00  -  add ecx,000000C8
+"MMU.exe"+20E56: E8 85 C5 08 00     -  call MMU.exe+AD3E0
+"MMU.exe"+20E5B: 83 E8 01           -  sub eax,01
+"MMU.exe"+20E5E: 50                 -  push eax
+"MMU.exe"+20E5F: 8B 4D FC           -  mov ecx,[ebp-04]
+"MMU.exe"+20E62: 81 C1 C8 00 00 00  -  add ecx,000000C8
+"MMU.exe"+20E68: E8 63 3B FE FF     -  call MMU.exe+49D0
+"MMU.exe"+20E6D: 32 C0              -  xor al,al
+"MMU.exe"+20E6F: 8B E5              -  mov esp,ebp
+}
+</AssemblerScript>
+    </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols>
     <SymbolEntry>
