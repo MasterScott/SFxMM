@@ -543,6 +543,80 @@ dealloc(newmem)
 
 </AssemblerScript>
     </CheatEntry>
+    <CheatEntry>
+      <ID>178</ID>
+      <Description>"Infinite Weapon Energy"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MMU.exe
+  Version: 
+  Date   : 2019-01-31
+  Author : antum
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(aobInfiniteWeapon,MMU.exe,D9 00 8B E5 5D C2 04) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  mov [eax],(float)28.0
+
+code:
+  fld dword ptr [eax]
+  mov esp,ebp
+  pop ebp
+  jmp return
+
+aobInfiniteWeapon:
+  jmp newmem
+return:
+registersymbol(aobInfiniteWeapon)
+
+[DISABLE]
+
+aobInfiniteWeapon:
+  db D9 00 8B E5 5D
+
+unregistersymbol(aobInfiniteWeapon)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+20E99
+
+"MMU.exe"+20E7F: CC                 -  int 3 
+"MMU.exe"+20E80: 55                 -  push ebp
+"MMU.exe"+20E81: 8B EC              -  mov ebp,esp
+"MMU.exe"+20E83: 51                 -  push ecx
+"MMU.exe"+20E84: 89 4D FC           -  mov [ebp-04],ecx
+"MMU.exe"+20E87: 8D 45 08           -  lea eax,[ebp+08]
+"MMU.exe"+20E8A: 50                 -  push eax
+"MMU.exe"+20E8B: 8B 4D FC           -  mov ecx,[ebp-04]
+"MMU.exe"+20E8E: 81 C1 4C 01 00 00  -  add ecx,0000014C
+"MMU.exe"+20E94: E8 07 01 00 00     -  call MMU.exe+20FA0
+// ---------- INJECTING HERE ----------
+"MMU.exe"+20E99: D9 00              -  fld dword ptr [eax]
+"MMU.exe"+20E9B: 8B E5              -  mov esp,ebp
+"MMU.exe"+20E9D: 5D                 -  pop ebp
+// ---------- DONE INJECTING  ----------
+"MMU.exe"+20E9E: C2 04 00           -  ret 0004
+"MMU.exe"+20EA1: CC                 -  int 3 
+"MMU.exe"+20EA2: CC                 -  int 3 
+"MMU.exe"+20EA3: CC                 -  int 3 
+"MMU.exe"+20EA4: CC                 -  int 3 
+"MMU.exe"+20EA5: CC                 -  int 3 
+"MMU.exe"+20EA6: CC                 -  int 3 
+"MMU.exe"+20EA7: CC                 -  int 3 
+"MMU.exe"+20EA8: CC                 -  int 3 
+"MMU.exe"+20EA9: CC                 -  int 3 
+}
+</AssemblerScript>
+    </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols>
     <SymbolEntry>
