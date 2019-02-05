@@ -544,6 +544,78 @@ dealloc(newmem)
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
+      <ID>261</ID>
+      <Description>"Infinite Lives"</Description>
+      <LastState/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MMU.exe
+  Version: 
+  Date   : 2019-02-04
+  Author : antum
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(aobInfiniteLives,MMU.exe,89 48 2C 8B E5 5D C2 04 00 CC CC 55 8B EC 51 89 4D FC 8B 45 FC 8B 48 64) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+  add ecx,1
+
+code:
+  mov [eax+2C],ecx
+  mov esp,ebp
+  jmp return
+
+aobInfiniteLives:
+  jmp newmem
+return:
+registersymbol(aobInfiniteLives)
+
+[DISABLE]
+
+aobInfiniteLives:
+  db 89 48 2C 8B E5
+
+unregistersymbol(aobInfiniteLives)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+49E5
+
+"MMU.exe"+49CE: CC                    -  int 3 
+"MMU.exe"+49CF: CC                    -  int 3 
+"MMU.exe"+49D0: 55                    -  push ebp
+"MMU.exe"+49D1: 8B EC                 -  mov ebp,esp
+"MMU.exe"+49D3: 51                    -  push ecx
+"MMU.exe"+49D4: 89 4D FC              -  mov [ebp-04],ecx
+"MMU.exe"+49D7: 8B 4D FC              -  mov ecx,[ebp-04]
+"MMU.exe"+49DA: E8 D1 FF FF FF        -  call MMU.exe+49B0
+"MMU.exe"+49DF: 8B 45 FC              -  mov eax,[ebp-04]
+"MMU.exe"+49E2: 8B 4D 08              -  mov ecx,[ebp+08]
+// ---------- INJECTING HERE ----------
+"MMU.exe"+49E5: 89 48 2C              -  mov [eax+2C],ecx
+"MMU.exe"+49E8: 8B E5                 -  mov esp,ebp
+// ---------- DONE INJECTING  ----------
+"MMU.exe"+49EA: 5D                    -  pop ebp
+"MMU.exe"+49EB: C2 04 00              -  ret 0004
+"MMU.exe"+49EE: CC                    -  int 3 
+"MMU.exe"+49EF: CC                    -  int 3 
+"MMU.exe"+49F0: 55                    -  push ebp
+"MMU.exe"+49F1: 8B EC                 -  mov ebp,esp
+"MMU.exe"+49F3: 51                    -  push ecx
+"MMU.exe"+49F4: 89 4D FC              -  mov [ebp-04],ecx
+"MMU.exe"+49F7: 8B 45 FC              -  mov eax,[ebp-04]
+"MMU.exe"+49FA: 8B 48 64              -  mov ecx,[eax+64]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
       <ID>178</ID>
       <Description>"Infinite Weapon Energy"</Description>
       <LastState/>

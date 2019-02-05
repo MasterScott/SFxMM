@@ -1,4 +1,3 @@
 MMU TODO:
 - scripts:
   - auto-fill weapon energy after death
-  - infinite lives (add 1 life after death)
