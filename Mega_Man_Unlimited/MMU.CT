@@ -289,35 +289,6 @@ aobYokuAttack:
 unregistersymbol(aobYokuAttack)
 dealloc(newmem)
 
-{
-// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+20ECC
-
-"MMU.exe"+20EB0: 55                 -  push ebp
-"MMU.exe"+20EB1: 8B EC              -  mov ebp,esp
-"MMU.exe"+20EB3: 51                 -  push ecx
-"MMU.exe"+20EB4: 89 4D FC           -  mov [ebp-04],ecx
-"MMU.exe"+20EB7: 8D 45 08           -  lea eax,[ebp+08]
-"MMU.exe"+20EBA: 50                 -  push eax
-"MMU.exe"+20EBB: 8B 4D FC           -  mov ecx,[ebp-04]
-"MMU.exe"+20EBE: 81 C1 4C 01 00 00  -  add ecx,0000014C
-"MMU.exe"+20EC4: E8 D7 00 00 00     -  call MMU.exe+20FA0
-"MMU.exe"+20EC9: D9 45 0C           -  fld dword ptr [ebp+0C]
-// ---------- INJECTING HERE ----------
-"MMU.exe"+20ECC: D9 18              -  fstp dword ptr [eax]
-"MMU.exe"+20ECE: 8B E5              -  mov esp,ebp
-"MMU.exe"+20ED0: 5D                 -  pop ebp
-// ---------- DONE INJECTING  ----------
-"MMU.exe"+20ED1: C2 08 00           -  ret 0008
-"MMU.exe"+20ED4: CC                 -  int 3 
-"MMU.exe"+20ED5: CC                 -  int 3 
-"MMU.exe"+20ED6: CC                 -  int 3 
-"MMU.exe"+20ED7: CC                 -  int 3 
-"MMU.exe"+20ED8: CC                 -  int 3 
-"MMU.exe"+20ED9: CC                 -  int 3 
-"MMU.exe"+20EDA: CC                 -  int 3 
-"MMU.exe"+20EDB: CC                 -  int 3 
-"MMU.exe"+20EDC: CC                 -  int 3 
-}
 </AssemblerScript>
           <CheatEntries>
             <CheatEntry>
@@ -485,6 +456,8 @@ dealloc(newmem)
   Version: 1.3.1
   Date   : 2019-01-31
   Author : AntumDeluge
+
+  Energy is reduced to 0 upon enemy collision, causing instant death.
 }
 
 [ENABLE]
@@ -522,12 +495,15 @@ dealloc(newmem)
       <ID>261</ID>
       <Description>"Infinite Lives"</Description>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : MMU.exe
-  Version: 
+      <AssemblerScript>{ Game   : Mega Man Unlimited
+  Version: 1.3.1
   Date   : 2019-02-04
-  Author : antum
+  Author : AntumDeluge
 
-  This script does blah blah blah
+  Adds 1 life after death, giving infinite number of lives.
+  Does not work if lives is at 0.
+
+  TODO: Add 2 lives if lives at 0.
 }
 
 [ENABLE]
@@ -559,46 +535,18 @@ aobInfiniteLives:
 unregistersymbol(aobInfiniteLives)
 dealloc(newmem)
 
-{
-// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+49E5
-
-"MMU.exe"+49CE: CC                    -  int 3 
-"MMU.exe"+49CF: CC                    -  int 3 
-"MMU.exe"+49D0: 55                    -  push ebp
-"MMU.exe"+49D1: 8B EC                 -  mov ebp,esp
-"MMU.exe"+49D3: 51                    -  push ecx
-"MMU.exe"+49D4: 89 4D FC              -  mov [ebp-04],ecx
-"MMU.exe"+49D7: 8B 4D FC              -  mov ecx,[ebp-04]
-"MMU.exe"+49DA: E8 D1 FF FF FF        -  call MMU.exe+49B0
-"MMU.exe"+49DF: 8B 45 FC              -  mov eax,[ebp-04]
-"MMU.exe"+49E2: 8B 4D 08              -  mov ecx,[ebp+08]
-// ---------- INJECTING HERE ----------
-"MMU.exe"+49E5: 89 48 2C              -  mov [eax+2C],ecx
-"MMU.exe"+49E8: 8B E5                 -  mov esp,ebp
-// ---------- DONE INJECTING  ----------
-"MMU.exe"+49EA: 5D                    -  pop ebp
-"MMU.exe"+49EB: C2 04 00              -  ret 0004
-"MMU.exe"+49EE: CC                    -  int 3 
-"MMU.exe"+49EF: CC                    -  int 3 
-"MMU.exe"+49F0: 55                    -  push ebp
-"MMU.exe"+49F1: 8B EC                 -  mov ebp,esp
-"MMU.exe"+49F3: 51                    -  push ecx
-"MMU.exe"+49F4: 89 4D FC              -  mov [ebp-04],ecx
-"MMU.exe"+49F7: 8B 45 FC              -  mov eax,[ebp-04]
-"MMU.exe"+49FA: 8B 48 64              -  mov ecx,[eax+64]
-}
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
       <ID>178</ID>
       <Description>"Infinite Weapon Energy"</Description>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : MMU.exe
-  Version: 
+      <AssemblerScript>{ Game   : Mega Man Unlimited
+  Version: 1.3.1
   Date   : 2019-01-31
-  Author : antum
+  Author : AntumDeluge
 
-  This script does blah blah blah
+  Constantly refills weapon/tool energy.
 }
 
 [ENABLE]
@@ -631,47 +579,19 @@ aobInfiniteWeapon:
 unregistersymbol(aobInfiniteWeapon)
 dealloc(newmem)
 
-{
-// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+20E99
-
-"MMU.exe"+20E7F: CC                 -  int 3 
-"MMU.exe"+20E80: 55                 -  push ebp
-"MMU.exe"+20E81: 8B EC              -  mov ebp,esp
-"MMU.exe"+20E83: 51                 -  push ecx
-"MMU.exe"+20E84: 89 4D FC           -  mov [ebp-04],ecx
-"MMU.exe"+20E87: 8D 45 08           -  lea eax,[ebp+08]
-"MMU.exe"+20E8A: 50                 -  push eax
-"MMU.exe"+20E8B: 8B 4D FC           -  mov ecx,[ebp-04]
-"MMU.exe"+20E8E: 81 C1 4C 01 00 00  -  add ecx,0000014C
-"MMU.exe"+20E94: E8 07 01 00 00     -  call MMU.exe+20FA0
-// ---------- INJECTING HERE ----------
-"MMU.exe"+20E99: D9 00              -  fld dword ptr [eax]
-"MMU.exe"+20E9B: 8B E5              -  mov esp,ebp
-"MMU.exe"+20E9D: 5D                 -  pop ebp
-// ---------- DONE INJECTING  ----------
-"MMU.exe"+20E9E: C2 04 00           -  ret 0004
-"MMU.exe"+20EA1: CC                 -  int 3 
-"MMU.exe"+20EA2: CC                 -  int 3 
-"MMU.exe"+20EA3: CC                 -  int 3 
-"MMU.exe"+20EA4: CC                 -  int 3 
-"MMU.exe"+20EA5: CC                 -  int 3 
-"MMU.exe"+20EA6: CC                 -  int 3 
-"MMU.exe"+20EA7: CC                 -  int 3 
-"MMU.exe"+20EA8: CC                 -  int 3 
-"MMU.exe"+20EA9: CC                 -  int 3 
-}
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
       <ID>179</ID>
       <Description>"Invincibility"</Description>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : MMU.exe
-  Version: 
+      <AssemblerScript>{ Game   : Mega Man Unlimited
+  Version: 1.3.1
   Date   : 2019-01-31
-  Author : antum
+  Author : AntumDeluge
 
-  This script does blah blah blah
+  Disables reducing energy on enemy collision, making player invulnerable
+  to enemy attacks.
 }
 
 [ENABLE]
@@ -686,7 +606,6 @@ newmem:
 
 code:
   //mov [eax+00000150],edx
-  mov [eax+00000150],(int)28
   jmp return
 
 aobInvincible+04:
@@ -703,45 +622,18 @@ aobInvincible+04:
 unregistersymbol(aobInvincible)
 dealloc(newmem)
 
-{
-// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+1B01BA
-
-"MMU.exe"+1B0198: 68 3C D7 67 00                 -  push MMU.exe+27D73C
-"MMU.exe"+1B019D: E8 1E 04 E9 FF                 -  call MMU.exe+405C0
-"MMU.exe"+1B01A2: 83 C4 08                       -  add esp,08
-"MMU.exe"+1B01A5: B0 01                          -  mov al,01
-"MMU.exe"+1B01A7: EB 35                          -  jmp MMU.exe+1B01DE
-"MMU.exe"+1B01A9: EB 15                          -  jmp MMU.exe+1B01C0
-"MMU.exe"+1B01AB: 8B 4D FC                       -  mov ecx,[ebp-04]
-"MMU.exe"+1B01AE: 8B 91 50 01 00 00              -  mov edx,[ecx+00000150]
-"MMU.exe"+1B01B4: 2B 55 08                       -  sub edx,[ebp+08]
-"MMU.exe"+1B01B7: 8B 45 FC                       -  mov eax,[ebp-04]
-// ---------- INJECTING HERE ----------
-"MMU.exe"+1B01BA: 89 90 50 01 00 00              -  mov [eax+00000150],edx
-// ---------- DONE INJECTING  ----------
-"MMU.exe"+1B01C0: 8B 4D FC                       -  mov ecx,[ebp-04]
-"MMU.exe"+1B01C3: 8B 91 50 01 00 00              -  mov edx,[ecx+00000150]
-"MMU.exe"+1B01C9: 52                             -  push edx
-"MMU.exe"+1B01CA: 8B 0D A0 55 6C 00              -  mov ecx,[MMU.exe+2C55A0]
-"MMU.exe"+1B01D0: E8 BB C5 EF FF                 -  call MMU.exe+AC790
-"MMU.exe"+1B01D5: 8B C8                          -  mov ecx,eax
-"MMU.exe"+1B01D7: E8 24 00 E7 FF                 -  call MMU.exe+20200
-"MMU.exe"+1B01DC: 32 C0                          -  xor al,al
-"MMU.exe"+1B01DE: 8B E5                          -  mov esp,ebp
-"MMU.exe"+1B01E0: 5D                             -  pop ebp
-}
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
       <ID>259</ID>
       <Description>"10+ Lives"</Description>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : MMU.exe
-  Version: 
+      <AssemblerScript>{ Game   : Mega Man Unlimited
+  Version: 1.3.1
   Date   : 2019-02-04
-  Author : antum
+  Author : AntumDeluge
 
-  This script does blah blah blah
+  Removes limit of 9 maximum lives.
 }
 
 [ENABLE]
@@ -777,47 +669,18 @@ aobAllowMoreLives:
 unregistersymbol(aobAllowMoreLives)
 dealloc(newmem)
 
-{
-// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+4A98
-
-"MMU.exe"+4A7E: CC                    -  int 3 
-"MMU.exe"+4A7F: CC                    -  int 3 
-"MMU.exe"+4A80: 55                    -  push ebp
-"MMU.exe"+4A81: 8B EC                 -  mov ebp,esp
-"MMU.exe"+4A83: 51                    -  push ecx
-"MMU.exe"+4A84: 89 4D FC              -  mov [ebp-04],ecx
-"MMU.exe"+4A87: 8B 4D FC              -  mov ecx,[ebp-04]
-"MMU.exe"+4A8A: 81 C1 C8 00 00 00     -  add ecx,000000C8
-"MMU.exe"+4A90: E8 4B 89 0A 00        -  call MMU.exe+AD3E0
-"MMU.exe"+4A95: 83 F8 09              -  cmp eax,09
-// ---------- INJECTING HERE ----------
-"MMU.exe"+4A98: 75 02                 -  jne MMU.exe+4A9C
-"MMU.exe"+4A9A: EB 20                 -  jmp MMU.exe+4ABC
-"MMU.exe"+4A9C: 8B 4D FC              -  mov ecx,[ebp-04]
-// ---------- DONE INJECTING  ----------
-"MMU.exe"+4A9F: 81 C1 C8 00 00 00     -  add ecx,000000C8
-"MMU.exe"+4AA5: E8 36 89 0A 00        -  call MMU.exe+AD3E0
-"MMU.exe"+4AAA: 83 C0 01              -  add eax,01
-"MMU.exe"+4AAD: 50                    -  push eax
-"MMU.exe"+4AAE: 8B 4D FC              -  mov ecx,[ebp-04]
-"MMU.exe"+4AB1: 81 C1 C8 00 00 00     -  add ecx,000000C8
-"MMU.exe"+4AB7: E8 14 FF FF FF        -  call MMU.exe+49D0
-"MMU.exe"+4ABC: 8B E5                 -  mov esp,ebp
-"MMU.exe"+4ABE: 5D                    -  pop ebp
-"MMU.exe"+4ABF: C3                    -  ret 
-}
 </AssemblerScript>
     </CheatEntry>
     <CheatEntry>
       <ID>260</ID>
       <Description>"Auto End Stage"</Description>
       <VariableType>Auto Assembler Script</VariableType>
-      <AssemblerScript>{ Game   : MMU.exe
-  Version: 
+      <AssemblerScript>{ Game   : Mega Man Unlimited
+  Version: 1.3.1
   Date   : 2019-02-04
-  Author : antum
+  Author : AntumDeluge
 
-  This script does blah blah blah
+  Loads continue screen after death no matter how many lives remain.
 }
 
 [ENABLE]
@@ -850,35 +713,6 @@ autoEndStage+04:
 unregistersymbol(autoEndStage)
 dealloc(newmem)
 
-{
-// ORIGINAL CODE - INJECTION POINT: "MMU.exe"+20E47
-
-"MMU.exe"+20E2E: CC                 -  int 3 
-"MMU.exe"+20E2F: CC                 -  int 3 
-"MMU.exe"+20E30: 55                 -  push ebp
-"MMU.exe"+20E31: 8B EC              -  mov ebp,esp
-"MMU.exe"+20E33: 51                 -  push ecx
-"MMU.exe"+20E34: 89 4D FC           -  mov [ebp-04],ecx
-"MMU.exe"+20E37: 8B 4D FC           -  mov ecx,[ebp-04]
-"MMU.exe"+20E3A: 81 C1 C8 00 00 00  -  add ecx,000000C8
-"MMU.exe"+20E40: E8 9B C5 08 00     -  call MMU.exe+AD3E0
-"MMU.exe"+20E45: 85 C0              -  test eax,eax
-// ---------- INJECTING HERE ----------
-"MMU.exe"+20E47: 75 04              -  jne MMU.exe+20E4D
-"MMU.exe"+20E49: B0 01              -  mov al,01
-"MMU.exe"+20E4B: EB 22              -  jmp MMU.exe+20E6F
-// ---------- DONE INJECTING  ----------
-"MMU.exe"+20E4D: 8B 4D FC           -  mov ecx,[ebp-04]
-"MMU.exe"+20E50: 81 C1 C8 00 00 00  -  add ecx,000000C8
-"MMU.exe"+20E56: E8 85 C5 08 00     -  call MMU.exe+AD3E0
-"MMU.exe"+20E5B: 83 E8 01           -  sub eax,01
-"MMU.exe"+20E5E: 50                 -  push eax
-"MMU.exe"+20E5F: 8B 4D FC           -  mov ecx,[ebp-04]
-"MMU.exe"+20E62: 81 C1 C8 00 00 00  -  add ecx,000000C8
-"MMU.exe"+20E68: E8 63 3B FE FF     -  call MMU.exe+49D0
-"MMU.exe"+20E6D: 32 C0              -  xor al,al
-"MMU.exe"+20E6F: 8B E5              -  mov esp,ebp
-}
 </AssemblerScript>
     </CheatEntry>
   </CheatEntries>
