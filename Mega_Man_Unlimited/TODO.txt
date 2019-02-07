@@ -1,3 +1,0 @@
-MMU TODO:
-- scripts:
-  - auto-fill weapon energy after death
